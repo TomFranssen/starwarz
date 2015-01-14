@@ -1,0 +1,63 @@
+// Pills
+// -------------------------
+#wizard {
+  position:relative;
+}
+
+.nav-wizard {
+
+  border-radius: $border-radius-base;
+
+  > li {
+    float: left;
+
+    // Links rendered as pills
+    > span {
+      padding: $nav-link-padding;
+      border: 1px solid $gray;
+      margin-left: -1px;
+      display:inline-block;
+
+
+
+
+      &,
+      &:hover,
+      &:focus {
+        color: $link-color;
+        background-color: transparent;
+      }
+    }
+    + li {
+      margin-left: 0;
+    }
+
+    &:first-child  > span {
+      @include border-left-radius($border-radius-base);
+    }
+
+    &:last-child  > span {
+      @include border-right-radius($border-radius-base);
+    }
+
+    // Completed state
+    &.completed > span {
+      &,
+      &:hover,
+      &:focus {
+        color: #000;
+        background-color: $gray-lighter;
+      }
+    }
+
+    // Active state
+    &.active > span {
+      &,
+      &:hover,
+      &:focus {
+        color: $nav-pills-active-link-hover-color;
+        background-color: $nav-pills-active-link-hover-bg;
+      }
+    }
+  }
+}

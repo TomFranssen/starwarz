@@ -1,0 +1,54 @@
+#dotParse("/global/private/vtl/paging/search-paging.vtl")
+
+##Settings
+#set($searchIndex = "smallsites")
+#set($pageLinkUrl = "${request.getRequestURI()}?q=$request.getParameter('q')")
+#set($pageSize = 10)
+#set($maxDescriptionLength = 100) ##use -1 for standard Dotcms behaviour
+#set($maxPageLinks = 5)
+
+##Retrieve data
+#set($q = $request.getParameter("q"))
+#getCurrentPage ($currentPage)
+#set($currentIndex = ($pageSize * ($currentPage - 1)))
+##set($maxPageLinks = $math.ceil($searchresults.getTotalResults() / $pageSize))
+
+#set($searchresults = $sitesearch.search($searchIndex, $q, $currentIndex, $pageSize))
+
+<h1>Zoekresultaten</h1>
+
+#set($numberOfResults = $searchresults.getTotalResults())
+
+#if($numberOfResults > 0)
+
+	#if($numberOfResults == 1)
+	    <p>Er is 1 resultaat gevonden voor "$!esc.html($q)".</p>
+	#else
+	    <p>Er zijn $!{numberOfResults} resultaten gevonden voor "$!esc.html($q)".</p>
+	#end
+
+	
+	#printPaging($searchresults $pageLinkUrl $pageSize $maxPageLinks $currentPage)
+	
+
+        <div class="list-group">
+		#foreach($result in $searchresults.results)
+                <a href="${result.uri}" class="list-group-item">
+                    <h3 class="list-group-item-heading">$!esc.html($result.title)</h3>
+                    #if($maxDescriptionLength == -1)
+                        <p class="list-group-item-text">$!result.description</p>
+                    #else
+                        #if ($result.description.length() > $maxDescriptionLength)
+                            <p class="list-group-item-text">$!{result.description.substring(0, $maxDescriptionLength)}...</p>
+                        #else
+                            <p class="list-group-item-text">$!{result.description.substring(0, $maxDescriptionLength)}</p>
+                        #end
+                    #end
+                </a>
+		#end
+        </div>
+	
+	#printPaging($searchresults $pageLinkUrl $pageSize $maxPageLinks $currentPage)
+#else
+	<p>Er zijn geen resultaten gevonden voor "$!esc.html($q)".</p>
+#end

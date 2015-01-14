@@ -1,0 +1,52 @@
+{% macro menulink(label, url) %}
+
+    {% if url == currentUrl %}
+        {% set className = 'active' %}
+    {% endif %}
+
+    <li class="{{ className }}"><a href="{{ url }}">{{ label }}</a></li>
+{% endmacro %}
+
+{% macro menulinkClass(url) %}
+
+    {% if url == currentUrl %}
+        {% set className = 'active' %}
+    {% endif %}
+
+    {{ className }}
+{% endmacro %}
+
+<aside class="offcanvas-menu">
+    <nav>
+        <ul class="nav nav-pills nav-stacked nav-offcanvas">
+            {{ _self.menulink('Home','/') }}
+            {{ _self.menulink('Nieuws','/news/') }}
+
+
+            {{ _self.menulink('Home','/') }}
+            {{ _self.menulink('Nieuws','/news/') }}
+            {{ _self.menulink('Kalender','/calendar/') }}
+
+            <li class="{{ menu-offcanvas.menulinkClass('/kitchensink/') }}">
+                <a href="#">Kitchensink</a>
+                <ul>
+                    {{ _self.menulink('Form','/kitchensink/forms.php') }}
+                    {{ _self.menulink('Type','/kitchensink/type.php') }}
+                    {{ _self.menulink('Modal / tooltip','/kitchensink/modal-and-tooltip.php') }}
+                    {{ _self.menulink('Equal height','/kitchensink/equal-height.php') }}
+                </ul>
+            </li>
+            {{ _self.menulink('Links','/links.php') }}
+            {{ _self.menulink('Links','/links.php') }}
+            {{ _self.menulink('Contact','/contact') }}
+            {{ _self.menulink('Faq','/faq.php') }}
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Modules <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    {{ _self.menulink('Wizard','/wizard') }}
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</aside>

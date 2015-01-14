@@ -1,0 +1,127 @@
+header {
+  border-bottom:1px solid $gray-lighter;
+  min-height:70px; //min logo height and padding
+
+  .offcanvas-toggle {
+    display: block;
+    height: 34px;
+    width: 34px;
+    padding:10px 6px 0 6px;
+    margin:17px 10px 0 0;
+    cursor:pointer;
+    
+    // Bars
+    .icon-bar {
+      display: block;
+      width: 22px;
+      height: 2px;
+      border-radius: 1px;
+      background-color:$gray-dark;
+    }
+    
+    .icon-bar + .icon-bar {
+      margin-top: 4px;
+    }
+  }
+
+  .btn-toggle-search {
+    border-color:transparent;
+    border-radius:0;
+    font-size:24px;
+    height:70px;
+    width:60px;
+    padding-top:18px;
+    margin-right:20px;
+    color:$gray-dark;
+    background-color:$gray-light;
+    &:hover,
+    &:focus,
+    &:active {
+      color:$gray-dark;
+      background-color:$gray-light;
+      border-color:transparent;
+      @include box-shadow(none);
+    }
+    
+    &.collapsed,
+    &.collapsed:hover,
+    &.collapsed:focus,
+    &.collapsed:active  {
+      color:$gray-dark;
+      background-color: transparent;
+      @include box-shadow(none);  
+    }
+    
+    
+  }
+
+  .logo {
+    margin:10px 0;
+    position:absolute;
+    width:50px;
+    height:50px;
+    top:0;
+    left:50%;
+    margin-left:- 50px / 2; //center by adding negative half width
+    @include isaac-respond-min-width(md) {
+      position:static;
+      width:80px;
+      height:80px;
+      top:auto;
+      left:auto;
+      margin-left:0;
+    }
+    > a {
+
+      > img {
+        width:100%;
+        height:100%;
+      }
+    }
+  }
+
+
+
+  .tagline {
+    font-size:38px;
+    font-family:$font-family-webfont;
+    font-weight:700;
+    height:50px;
+    padding:22px 0 0 20px;
+  }
+
+
+  .nav-main > li > .dropdown-menu {
+    margin-top: 0;
+    @include border-top-radius(0);
+  }
+  
+  .nav-metamenu {
+    display:inline-block;
+    clear:both;
+  }
+  
+  .form-search {
+    clear:both;
+    width:250px;
+    > .form-group {
+      //display:block;
+    }
+  }
+  #searchbar {
+    position:absolute;
+    width:100%;
+    background-color:$gray-light;
+    z-index:$zindex-dropdown;
+    form {
+      margin:20px 10px;
+    }
+    
+    /*on IE and FF the height is 1px too large, fix it here*/
+    .btn {
+      height: 36px;
+    }
+    
+  }
+}
+

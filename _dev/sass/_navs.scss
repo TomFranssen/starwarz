@@ -1,0 +1,46 @@
+//offcanvase menu
+.nav-offcanvas {
+  > li > a {
+    border-radius:0;
+    &:hover,
+    &:focus {
+      @include box-shadow($offcanvas-shadow);
+    }      
+  }
+  
+  > li.active > a {
+    @include box-shadow($offcanvas-shadow);
+  }
+  
+  > li + li {
+    margin-top:0;
+  }
+  
+  /*submenu*/
+  > li > ul {
+    list-style: none;
+    padding-left:0;
+    > li > a {
+        position: relative;
+        display: block;
+        padding: $nav-link-padding;
+        padding-left:20px;
+        &:hover,
+        &:focus {
+          text-decoration: none;
+          background-color: $nav-link-hover-bg;
+          @include box-shadow($offcanvas-shadow);
+        }
+        &:before {
+          content:"\00BB  ";
+        }
+    }
+    
+    > li.active > a {
+      color:#fff;
+      background-color: $brand-primary;
+      @include box-shadow($offcanvas-shadow);
+    }
+    
+  }
+}

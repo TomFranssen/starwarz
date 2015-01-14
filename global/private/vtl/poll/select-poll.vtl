@@ -1,0 +1,44 @@
+## This requires a field called "Select Poll"
+## With a velocity variable name "selectPoll"
+
+<script>
+	function changePollValue(){
+		var val = dijit.byId("pollSelectControl").value;
+		if(val == "0"){
+			
+			dijit.byId("widgetTitle").attr('value', '');
+			dojo.byId("selectPoll").value = '';
+			alert("Please select a poll");
+			return;
+		}
+		var text = dijit.byId("pollSelectControl").attr('displayedValue');
+		if(text.length > 200){
+			text= text.substring(0,199) + "...";
+		}
+		dojo.byId("selectPoll").value = val;
+		dijit.byId("widgetTitle").attr('value', text);
+}
+
+
+	dojo.addOnLoad(
+		function(){
+			dojo.style("widgetTitle_tag", "display", "none");
+			dojo.style("widgetTitle_field", "display", "none");
+
+		}
+	);
+
+
+</script>
+
+#getSQLResults("select * from pollsquestion where companyid='dotcms.org' order by questionid desc")
+<select dojoType="dijit.form.FilteringSelect" name="pollSelectControl" id="pollSelectControl" onChange="changePollValue()">
+	<option value="0"></option>	
+	#foreach($r in $results)
+		#if($r.questionid == $selectPoll)
+			<option selected="true" value="$r.questionid">$r.title</option>	
+		#else
+			<option value="$r.questionid">$r.title</option>	
+		#end
+	#end
+</select>

@@ -1,0 +1,12 @@
+<div class="jumbotron">
+    <div class="jumbotron-image">
+        <img src="/contentAsset/raw-data/$CONTENT_INODE/binaryimage/byInode/1" alt="$!esc.html($!{title})">
+    </div>
+    <div class="jumbotron-body">
+        <h1>${title}</h1>
+        <p>${content}</p>
+	    #if($UtilMethods.isSet($buttonText))
+            <p><a class="btn btn-primary btn-lg" role="button" href="${buttonLink}">${buttonText}</a></p>
+        #end
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="container">
+
+    <div class="clearfix">
+
+        <div class="pull-left hidden-md hidden-lg">
+            <span href="#" class="offcanvas-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </span><!--do not use an <a>, this has undesired effects on an iPhone -->
+        </div>
+
+        <div class="pull-left logo">
+            #codedWebPageContent("header-logo")
+        </div>
+        <div class="pull-left tagline hidden-xs hidden-sm">
+            #codedWebPageContent("header-tagline")
+        </div>
+
+        <div class="pull-right clearfix hidden-xs hidden-sm">
+            <div class="nav-metamenu pull-right">
+                #codedWebPageContent("header-metamenu")
+            </div>
+            <form id="frm-search" class="pull-right form-search" action="/search" method="get" role="search">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="search" class="form-control" placeholder="Zoeken" name="q" data-msg-required="" data-rule-required="true">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="icon-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="pull-right hidden-md hidden-lg">
+            <a class="btn btn-toggle-search collapsed"><i class="icon-search"></i></a>
+        </div>
+
+    </div>
+
+    <ul class="nav nav-pills nav-main hidden-xs hidden-sm">
+        #set($list = $navtool.getNav("/"))
+        #foreach($n in $list)
+            #set($children = $n.children)
+            #if( $children && $children.size() > 0 )
+                <li class="dropdown #if($n.active) active #end">
+                    <a href="${n.href}" class="dropdown-toggle" data-toggle="dropdown">$n.title <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        #foreach($ch in $children)
+                            <li><a href="${ch.href}">$ch.title</a></li>
+                        #end
+                    </ul>
+                </li>
+            #else
+                <li #if($n.active)class="active"#end ><a href="${n.href}">$n.title</a></li>
+            #end
+
+        #end
+    </ul>
+
+ </div>
+<div id="searchbar" class="collapse hidden-md hidden-lg">
+    <form id="frm-search-xs" class="form" role="search" action="/search" method="get">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="Zoeken" name="q-xs" data-msg-required="" data-rule-required="true">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="icon-search"></i></button>
+                </span>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,47 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie6 lte8"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7 lte8"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8 lte8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    {% include '_dev/containers/metadata.twig' %}
+    {% include '_dev/containers/css-default.twig' %}
+    {% include '_dev/containers/js-header-default.twig' %}
+</head>
+
+<body>
+<div id="content" class="offcanvas-content">
+
+    <header>
+        {% include '_dev/containers/header.twig' %}
+    </header>
+
+    <main class="container">
+        {% include '_dev/containers/breadcrumb.twig' %}
+        <div class="row">
+            <article class="col-md-18 col-md-push-6">
+                {% block content1 %}{% endblock %}
+            </article>
+            <aside class="col-md-6 col-md-pull-18">
+                {% block content2 %}{% endblock %}
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        {% include '_dev/containers/footer.twig' %}
+    </footer>
+
+</div>
+
+{% include '_dev/containers/menu-offcanvas.twig' %}
+
+
+{% include '_dev/containers/js-body-default.twig' %}
+{% block jsBodyExtra %}{% endblock %}
+
+</body>
+</html>

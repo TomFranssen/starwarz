@@ -1,0 +1,21 @@
+/* line 3, ../../_dev/sass/carousel.scss */
+.carousel-inner > .item {
+  -webkit-backface-visibility: hidden;
+}
+
+/* line 12, ../../_dev/sass/carousel.scss */
+.carousel-control .icon-arrow-left,
+.carousel-control .icon-arrow-right {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  display: inline-block;
+}
+/* line 19, ../../_dev/sass/carousel.scss */
+.carousel-control .icon-arrow-left {
+  left: 50%;
+}
+/* line 22, ../../_dev/sass/carousel.scss */
+.carousel-control .icon-arrow-right {
+  right: 50%;
+}

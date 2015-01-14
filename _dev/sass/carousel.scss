@@ -1,0 +1,25 @@
+//fix flor flickering issue on iPad 1
+//http://stackoverflow.com/questions/2946748/iphone-webkit-css-animations-cause-flicker
+.carousel-inner  > .item {
+  -webkit-backface-visibility: hidden;
+}
+
+// Left/right controls for nav
+// ---------------------------
+
+.carousel-control {
+  // use icon-arrow-left and icon-arrow-right instead of Bootstrap's default glyphicon-chevron-left and glyphicon-chevron-right
+  .icon-arrow-left,
+  .icon-arrow-right {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+  }
+  .icon-arrow-left {
+    left: 50%;
+  }
+  .icon-arrow-right {
+    right: 50%;
+  }
+}

@@ -1,0 +1,38 @@
+{% extends "_dev/templates/1-col-left.twig" %}
+
+{% block content1 %}
+    <h1>Tooltip</h1>
+    <span data-toggle="tooltip" title="Lorem ipsum dolor set amet" data-placement="bottom">Show tooltip (Hover over me!)</span>
+
+    <h1>Modal dialog</h1>
+    <button class="btn btn-default" data-toggle="modal" data-target="#testModal">
+        Show modal
+    </button>
+
+    <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h2>Lorem ipsum dolor set amet</h2>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                    <h3>Lorem ipsum</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content2 %}
+    {% include '_dev/containers/menu-aside.twig' %}
+{% endblock %}

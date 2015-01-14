@@ -1,0 +1,9 @@
+#macro(codedWebPageContent $code)
+	#set($result = $dotcontent.pull("+structureName:${structurePrefixTool.getPrefixVelocityVariable($host)}CodedWebPageContent +${structurePrefixTool.getPrefixVelocityVariable($host)}CodedWebPageContent.code:${code}",1,""))
+	
+	#if($UtilMethods.isSet($result) && $result.size() > 0)
+		#set($content = $result.get(0))
+		#editContentlet($content.inode)
+		${content.body}
+	#end
+#end

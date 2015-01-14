@@ -1,0 +1,125 @@
+{% extends "_dev/templates/1-col-left.twig" %}
+
+{% block content1 %}
+    <div id="wizard">
+        {# do not use <a href="">, but <span data-target="">. The a has undesired browser default behaviour like adding a hashbang and remebering the scroll position #}
+        <ul class="nav nav-wizard" role="tablist">
+            <li class="active"><span data-target="#step-1" role="tab">Stap 1</span></li>
+            <li><span data-target="#step-2" role="tab">Stap 2</span></li>
+            <li><span data-target="#step-3" role="tab">Stap 3</span></li>
+            <li><span data-target="#step-4" role="tab">Stap 4</span></li>
+        </ul>
+
+        <div class="tab-content">
+            {#  //step 1 #}
+            <div class="tab-pane fade in active" id="step-1">
+                <form role="form" class="form-horizontal">
+
+                    <h2>Stap 1</h2>
+                    <p>Alleen de eerste stap moet de classes .in en .active hebben. De standaard Bootstrap tab javascript wordt gebruikt voor het tonen en verbergen van de stappen.</p>
+
+                    <div class="form-group">
+                        <label for="initials" class="col-md-4 control-label">Testdata</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="test1" id="test1"
+                                   data-rule-required="true"
+                                   data-msg-required="Dit is een verplicht veld"
+                                    >
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="clearfix">
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">Volgende</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            {#  //step 2 #}
+            <div class="tab-pane fade" id="step-2">
+                <h2>Tweede stap</h2>
+                <p>Een stap zonder form kan ook. Bovendien is deze stap heel lang, en scrollt de plugin naar de top voordat een nieuwe stap wordt geladen.</p>
+                <br><br>Scroll naar beneden...<br><br><br><br><br><br><br><br><br><br>
+
+
+
+                <hr>
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <button type="button" class="btn btn-default" data-bind="click: wizard.previous">Vorige</button>
+                    </div>
+                    <div class="pull-right">
+                        <button type="button" class="btn btn-primary" data-bind="click: wizard.next">Volgende</button>
+                    </div>
+                </div>
+            </div>
+
+            {#  //step 3 #}
+            <div class="tab-pane fade" id="step-3">
+                <form role="form" class="form-horizontal">
+
+                    <h2>Derde stap</h2>
+                    <p>Laat onderstaan veld leeg en klik op volgende. Je ziet dan een melding dat het veld verplicht is. Ga nu terug naar de vorige stap en weer naar deze stap. De melding is nu gereset.</p>
+
+                    <div class="form-group">
+                        <label for="initials" class="col-md-4 control-label">Testdata</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="test2" id="test2"
+                                   data-rule-required="true"
+                                   data-msg-required="Dit is een verplicht veld"
+                                    >
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="clearfix">
+                        <div class="pull-left">
+                            <button type="button" class="btn btn-default" data-bind="click: wizard.previous">Vorige</button>
+                        </div>
+                        <div class="pull-right">
+                            <button type="button" class="btn btn-primary" data-bind="click: wizard.next">Verzenden</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            {#  //step 4 #}
+            <div class="tab-pane fade" id="step-4">
+                <h2>Done!</h2>
+            </div>
+
+        </div>
+{% endblock %}
+
+{% block content2 %}
+{% endblock %}
+
+{% block jsBodyExtra %}
+        <script src="/global/js/vendor/html5-history-api/history.iegte8.js"></script>
+        <script src="/global/js/vendor/bootstrap-3.3.1/tab.js"></script>
+        <script src="/global/js/vendor/knockout/knockout-3.2.0.js"></script>
+        <script src="/global/js/vendor/knockout/knockout.mapping-latest.js"></script>
+        <script src="/global/js/jquery.isaac.wizard.js"></script>
+
+        <style>
+            .tab-pane {
+                height:400px;
+            }
+
+            .tab-pane .clearfix {
+                position:absolute;
+                bottom:0;
+            }
+
+        </style>
+
+        <script>
+            $(function() {
+                $("#wizard").on("completed.wizard", function(){
+                    $('.tab-pane button').attr('disabled','disabled');
+                    alert('The wizard is completed!');
+                }).wizard({});
+
+            });
+        </script>
+{% endblock %}

@@ -1,0 +1,14 @@
+#set($rssTotal = 10)
+#pullRSSFeed("http://www.nu.nl/deeplink_rss2/index.jsp?r=Algemeen")
+
+<ul>
+#foreach($content in $list)
+   <li>
+	   <div>$!esc.html($content.pubDate)</div>
+	   <div>$!esc.html($content.description)</div>
+	   <div>
+	   	<a href="$!esc.html($content.link)" target="link">Meer info</a>
+	   </div>
+   </li>
+#end
+</ul>

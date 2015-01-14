@@ -1,0 +1,11 @@
+// website without offcanvas menu is contained within #content
+#content {
+  background-color: $content-bg;
+  @include single-box-shadow(rgba(0,0,0,0.5), 0, 0, 10px, -2px)
+}
+
+main {
+  padding:20px 0 20px 0;
+}
+
+

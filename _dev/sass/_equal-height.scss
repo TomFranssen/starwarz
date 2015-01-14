@@ -1,0 +1,76 @@
+/*
+Make columns the same height, and add a "sticky" footer
+Use in combination with Bootstrap's row and columns, like so:
+
+<div class="row equal-height-sm-row">
+	<div class="col-sm-12">
+		<div class="equal-height-body"></div>
+		<div class="equal-height-footer"></div>
+	</div>
+	<div class="col-sm-12">
+		<div class="equal-height-body"></div>
+		<div class="equal-height-footer"></div>
+	</div>
+</div>
+
+Notes:
+- when using .row-xx-equal-height, the columns no longer float and thus .col-xx-offset, .col-xx-pull and col-xx-push cannot be used anymore
+- all columns must add up to completely fill the width ($grid-columns), otherwise the .row-sm-equal-height will not be full width. Caused by display: table-cell
+
+*/
+
+@include isaac-respond-min-width(xs){
+  .equal-height-row-xs {
+    display: table;
+    > [class^="col-"], [class*=" col-"] {
+      display: table-cell;
+      float:none;
+    }
+
+  }
+}
+
+@include isaac-respond-min-width(sm){
+  .equal-height-row-sm {
+    display: table;
+    > [class^="col-"], [class*=" col-"] {
+      display: table-cell;
+      float:none;
+    }
+
+  }
+}
+
+@include isaac-respond-min-width(md){
+  .equal-height-row-md {
+    display: table;
+    > [class^="col-"], [class*=" col-"] {
+      display: table-cell;
+      float:none;
+    }
+
+  }
+}
+
+@include isaac-respond-min-width(lg){
+  .equal-height-row-lg {
+    display: table;
+    > [class^="col-"], [class*=" col-"] {
+      display: table-cell;
+      float:none;
+    }
+
+  }
+}
+
+.equal-height-body {
+  //create space for the footer
+  padding-bottom:37px;
+}
+
+.equal-height-footer {
+  position:absolute;
+  bottom:0;
+  //right align content, remove this for left aligning
+  right:$grid-gutter-width / 2;
+}

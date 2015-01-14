@@ -1,0 +1,16 @@
+/*
+ * Custom components
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Kameron:400,700);
+
+//add subtle transition on elements that have a hovered or active state
+a, .btn, .form-control {
+  transition: color 0.2s ease-in-out 0s,
+    background 0.2s ease-in-out 0s,
+    border 0.2s ease-in-out 0s,
+    text-decoration 0.2s ease-in-out 0s,
+    box-shadow 0.2s ease-in-out 0s
+  ;
+}
+

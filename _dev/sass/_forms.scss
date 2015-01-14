@@ -1,0 +1,33 @@
+//form
+.form-control {
+  font-size: 16px; //prevent iPhone from zooming in when clicking an input that has a font-szie smaller then 16px
+
+  &.form-control-25 {
+    width:25%;
+  }
+
+  &.form-control-50 {
+    width:50%;
+  }
+
+  &.form-control-75 {
+    width:75%;
+  }
+}
+
+.has-error {    //Bootstrap makes all these element red if the form-group is in error state
+  .help-block,
+  .control-label,
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline  {
+    color: inherit;
+  }
+  //errors, triggered by javascript validation
+  label.has-error {
+  	@extend .help-block; //inherit margin from help-block
+  	font-weight:normal;
+  	color:$state-danger-text;
+  }
+}

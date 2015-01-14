@@ -1,0 +1,61 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="ie6 lte8"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7 lte8"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8 lte8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    {% include '_dev/containers/metadata.twig' %}
+    {% include '_dev/containers/css-default.twig' %}
+    {% include '_dev/containers/js-header-default.twig' %}
+    <link href="/global/css/carousel.css" rel="stylesheet" type="text/css"/>
+</head>
+
+<body>
+<div id="content" class="offcanvas-content clearfix">
+
+    <header>
+        {% include '_dev/containers/header.twig' %}
+    </header>
+
+    <main class="container">
+
+        <div class="row">
+            <div class="col-md-24">
+                {% block content1 %}{% endblock %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-24">
+                {% block content2 %}{% endblock %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col col-md-8">
+                {% block content3 %}{% endblock %}
+            </div>
+            <div class="col-md-8">
+                {% block content4 %}{% endblock %}
+            </div>
+            <div class="col-md-8">
+                {% block content5 %}{% endblock %}
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        {% include '_dev/containers/footer.twig' %}
+    </footer>
+
+</div>
+
+{% include '_dev/containers/menu-offcanvas.twig' %}
+{% include '_dev/containers/js-body-default.twig' %}
+<script src="/global/js/vendor/bootstrap-3.3.1/carousel.js"></script>
+
+</body>
+</html>

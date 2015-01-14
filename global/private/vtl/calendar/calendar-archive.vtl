@@ -1,0 +1,41 @@
+#dotParse("/global/private/vtl/paging/paging.vtl")
+
+##Settings
+#set ($pageLinkUrl = "${request.getRequestURI()}")
+#set ($pageSize = 3)
+#set ($maxPageLinks = 10)
+
+#set($calendarArchiveColClass = "col-xs-24")
+
+##Retrieve data
+#getCurrentPage ($currentPage)
+#set ($calendarItems = $dotcontent.pullPerPage("+structureName:${structurePrefixTool.getPrefixVelocityVariable($host)}Calendar +(conhost:$host.identifier)",$currentPage,$pageSize,"${structurePrefixTool.getPrefixVelocityVariable($host)}Calendar.eventDate desc"))
+
+<h1>Kalender archief</h1>
+#printPaging ($calendarItems $pageLinkUrl $pageSize $maxPageLinks $currentPage)
+
+<div class="list-group">
+	#foreach($calendarItem in $calendarItems)
+		#set($detailLinkUrl = $calendarItem.structure.urlMapPattern.replace("{urlPattern}","$!calendarItem.urlPattern"))
+		<a href="${detailLinkUrl}" class="list-group-item">
+            <div class="row">
+                #if(${calendarItem.image.size})
+                    <div class="col-xs-8">
+                        <img class="list-group-item-thumbnail" src="$calendarItem.image.getResizeUri(80, 0)"  alt="$!esc.html($!{calendarItem.header})"/>
+                    </div>
+                    #set($calendarArchiveColClass = "col-xs-16")
+                #end
+
+                <div class="${calendarArchiveColClass}">
+                    <div class="small">$date.format('dd-MM-yyyy', $!calendarItem.eventDate)</div>
+                    <h4 class="list-group-item-heading">$!esc.html($!{calendarItem.header})</h4>
+                    #if($UtilMethods.isSet(${calendarItem.introduction}))
+                        <p class="list-group-item-text">$!esc.html($!{calendarItem.introduction})</p>
+                    #end
+                </div>
+            </div>
+        </a>
+	#end
+</div>
+
+#printPaging ($calendarItems $pageLinkUrl $pageSize $maxPageLinks $currentPage)

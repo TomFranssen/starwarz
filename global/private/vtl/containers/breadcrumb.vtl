@@ -1,0 +1,16 @@
+#set($crumb = $contents.getEmptyList())
+#set( $current = $navtool.getNav($request.requestURI))
+#set($_x=$crumb.add(0,$current))
+#foreach($item in [1..25])
+	#set($current = $current.parent)
+	#if($current.title=="System folder")
+		#break
+	#end
+	#set($_x=$crumb.add(0,$current))
+#end
+<ol class="breadcrumb">
+	<li><a href="/">Home</a></li>
+	#foreach($item in $crumb)
+		<li><a href="${item.href}">${item.title}</a></li>
+	#end
+</ol>

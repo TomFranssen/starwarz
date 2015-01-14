@@ -1,0 +1,35 @@
+//default bootstrap Jumbotron css is not used, but the DOM is.
+.jumbotron {
+  position:relative;
+  margin-bottom:20px;
+
+  .jumbotron-image > img {
+    display: block;
+    position:relative;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .jumbotron-body {
+    display: block;
+    font-size:$jumbotron-font-size;
+    padding: $jumbotron-padding;
+    background:$jumbotron-bg;
+    color:$jumbotron-color;
+
+    @include isaac-respond-min-width(sm) {
+      position:absolute;
+      top:auto;
+      left:20px;
+      right: 50%;
+      bottom:20px;
+      margin-top:0;
+    }
+
+    h1 {
+      color: $jumbotron-heading-color;
+      margin-top:0;
+    }
+  }
+}
+

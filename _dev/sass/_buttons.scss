@@ -1,0 +1,16 @@
+//specify button padding 
+.btn {
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    @include opacity(.5);
+  }
+  
+  //icons inside buttons
+  [class^="icon-"], [class*=" icon-"] {
+    //position: relative;
+    //top: 1px;
+    //display: inline-block;
+  }
+}
+

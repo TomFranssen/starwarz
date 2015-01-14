@@ -1,0 +1,37 @@
+##settings
+##make sure $rootFolderPath is specified before including this file
+
+#set ($_dummy = $render.eval("\#set ($customFieldValue = $${field.velocityVarName})"))
+#set ($customFieldName = ${field.velocityVarName})
+#set($rootFolder = $macroTool.getFolderAPI().findFolderByPath($rootFolderPath, $host.identifier))
+#set($subFolders = $macroTool.getFolderAPI().findSubFolders($rootFolder))
+
+
+<script type="text/javascript">
+
+  function changeSelectValue_${field.velocityVarName}() {
+    currentValue = document.getElementById("$!{customFieldName}");
+    newValue = dijit.byId("$!{customFieldName}_selector").attr('value');
+    currentValue.value = newValue;
+  }
+</script>
+
+
+<select id="$!{customFieldName}_selector" data-dojo-type="dijit.form.FilteringSelect" name="$!{customFieldName}_selector">
+   <option>-- Select a folder --</option>
+  
+	#foreach($subFolder in $subFolders)
+		#set($folderItems = $macroTool.getFolderAPI().findFolderItems($subFolder, "working = 1"))
+		<option value="$subFolder.inode" #if ($subFolder.inode == $customFieldValue) selected #end>$subFolder.name ($folderItems.size() files)</option>
+	#end
+  
+	<script type="dojo/method" event="onChange">
+		changeSelectValue_${field.velocityVarName}();
+	</script>
+</select>
+
+#if($UtilMethods.isSet($rootFolder.inode) == false )
+	Error: Folder "$rootFolderPath" doesn't exist.
+#else
+	<span class="contentHint">Note: The root folder is "$host.hostName$rootFolderPath"</span>
+#end

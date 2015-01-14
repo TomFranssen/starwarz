@@ -1,0 +1,17 @@
+#set ($faqItems = $dotcontent.pull("+structureName:${structurePrefixTool.getPrefixVelocityVariable($host)}Faq +(conhost:$host.identifier)",0,"${structurePrefixTool.getPrefixVelocityVariable($host)}Faq.orderNumber asc"))
+
+
+<div class="panel-group">
+	#foreach($faqItem in $faqItems)
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#collapse${velocityCount}">$!esc.html($!{faqItem.question})</a></h4>
+			</div>
+			<div id="collapse${velocityCount}" class="panel-collapse collapse">
+				<div class="panel-body">
+					$!{faqItem.answer}
+				</div>
+			</div>
+		</div>
+	#end
+</div>

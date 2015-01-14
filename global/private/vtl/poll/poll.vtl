@@ -1,0 +1,30 @@
+##dotParse("/global/vtl/common.vtl")
+
+<div class="ym-gbox-box">
+  <h3>Poll</h3>
+  #set($allowViewResults = $showResultsWithoutAVote)
+  #set($showVotes = $showNumberOfVotes)
+  #poll("$selectPoll")
+</div>
+
+
+##http://stackoverflow.com/questions/3233991/jquery-watch-div/3234646#3234646
+
+#set($dummy = $extraJavascriptFiles.add("$sharedAssetUrl/global/js/jquery.livequery.js"))
+
+#set($dummy = $extraJavascript.add("
+  $(function(){
+  
+    ## .poll-result-table is available after the dotCMS js has added it to the DOM.
+    ## add a livequery to add extra <div> as soon as the .poll-result-table is available
+    $('.poll-result-table div.poll-result-bar').livequery(function(){
+      $(this).wrap('<div class=\"poll-result-bar-full\"></div>');
+      
+      //stop livequery
+      $('.poll-result-table div.poll-result-bar').expire();
+    }) 
+    
+  });
+  
+"))
+

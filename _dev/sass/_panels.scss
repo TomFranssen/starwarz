@@ -1,0 +1,28 @@
+.panel-group {
+
+  /*add carets and maximize click area*/
+	.panel-heading {
+		padding: 0; //remove default padding
+	
+		a[data-toggle="collapse"] {
+			position:relative;
+			display:block;
+			padding: 10px 15px 10px 30px; //maximize click area, left padding also creates space for caret
+			text-decoration:none;
+			&:before {
+				@include caret($caret-width-base, #000, bottom);
+				left:15px;
+				top:17px;
+			}
+	
+			&.collapsed {
+				&:before {
+					@include caret($caret-width-base, #000, right);
+					margin-left:$caret-width-base / 2;
+					margin-top:- $caret-width-base / 2;
+				}
+			}
+		}
+  }
+  
+}

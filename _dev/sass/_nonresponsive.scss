@@ -1,0 +1,24 @@
+//reset breakpoints to disable responiveness
+//Always trigger the md class, so the container will have the $container-md width
+
+$screen-xs-min:              1px;
+$screen-sm-min:              2px;
+$screen-md-min:              3px;
+$screen-lg-min:              9999999px;
+
+$screen-xs-max:              ($screen-sm-min - 1);
+$screen-sm-max:              ($screen-md-min - 1);
+$screen-md-max:              ($screen-lg-min - 1);
+
+
+// Make sure the body os wide enough.
+// If this min-width is not set and the device width is smaller then the container,
+// the wrapper around the container is not wide enough
+body {
+  min-width: $container-md;
+}
+
+.container {
+  width:auto!important;
+  max-width:$container-md!important;
+}

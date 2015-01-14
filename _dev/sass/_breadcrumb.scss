@@ -1,0 +1,12 @@
+/*use an icon as breadcrumb seperator*/
+.breadcrumb {
+  > li {
+    + li:before {
+      font-family:'moon-icons';
+      content: "\e606";
+      padding: 0 3px 0 1px;
+      color: $breadcrumb-color;
+      font-size:11px;
+    }
+  }
+}
