@@ -1,32 +1,44 @@
 var app = angular.module("gififyApp", []);
 
-//app.controller("gififyCtrl", function ($scope) {
-//    $scope.loadMoreTweets = function () {
-//        alert("LOAD gifs");
-//    }
-//})
 
+app.controller("AppCtrl", function ($scope) {
+    $scope.loadMoreTweets = function () {
+        alert("Loading tweets!");
+    }
+})
 
-app.directive("gifify", function(){
+app.directive('gifify', ['$http', function($http){
     return {
-        restrict: "E",
-        template: "<span ng-repeat='letter in letters'>{{letter}}</span>",
-
-
+        restrict: 'E',
+        template: '<div class="gifify-container"><span ng-repeat="letter in letters track by $index" style="background-image: url({{letter.background}})" class="gifify-letter">{{letter.character}}</span></div>',
+        scope: {},
         link: function (scope, element, attrs) {
-            var letters = attrs.letters,
-                seperatedLetters = [];
-            //scope.seperatedLetters = attrs.letters.split('');
+            var query = attrs.query,
+                seperatedLetters = [],
+                letterIndex,
+                gifIndex,
+                gifs = [];
 
-            for (var i = 0; i < letters.length; i++) {
-                console.log(letters.charAt(i));
-                seperatedLetters[i] = letters.charAt(i);
-            }
+            $http.get('http://api.giphy.com/v1/gifs/search?q=' + query + '&api_key=dc6zaTOxFJmzC')
+                .success(function(data, status, headers, config) {
+                    for (gifIndex = 0; gifIndex < data.data.length; gifIndex++) {
+                        gifs.push(data.data[gifIndex].images.fixed_height.url)
+                    }
+                    console.log(gifs);
+                    for (letterIndex = 0; letterIndex < query.length; letterIndex++) {
+                        seperatedLetters.push({
+                            character: query.charAt(letterIndex),
+                            background: gifs[letterIndex]
+                        });
+                    }
 
-            scope.letters = seperatedLetters;
+                    scope.query = attrs.query;
+                    scope.letters = seperatedLetters;
+                })
+                .error(function(data, status, headers, config) {
+                    // console.log('error');
+                });
 
-
-            console.log(scope.letters);
         }
     };
-});
+}]);

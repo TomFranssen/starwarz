@@ -7436,3 +7436,22 @@ Notes:
   color: #fff;
   background-color: #009ddc;
 }
+
+@font-face {
+  font-family: 'star_jediregular';
+  src: url("/global/fonts/starwarz/starjedi-webfont.eot");
+  src: url("/global/fonts/starwarz/starjedi-webfont.eot?#iefix") format("embedded-opentype"), url("/global/fonts/starwarz/starjedi-webfont.woff2") format("woff2"), url("/global/fonts/starwarz/starjedi-webfont.woff") format("woff"), url("/global/fonts/starwarz/starjedi-webfont.ttf") format("truetype"), url("/global/fonts/starwarz/starjedi-webfont.svg#star_jediregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 15, ../../_dev/sass/_gifify.scss */
+.gifify-container {
+  font-size: 160px;
+  font-family: star_jediregular;
+}
+/* line 19, ../../_dev/sass/_gifify.scss */
+.gifify-container .gifify-letter {
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

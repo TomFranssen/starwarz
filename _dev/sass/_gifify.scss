@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'star_jediregular';
+    src: url('/global/fonts/starwarz/starjedi-webfont.eot');
+    src: url('/global/fonts/starwarz/starjedi-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/global/fonts/starwarz/starjedi-webfont.woff2') format('woff2'),
+    url('/global/fonts/starwarz/starjedi-webfont.woff') format('woff'),
+    url('/global/fonts/starwarz/starjedi-webfont.ttf') format('truetype'),
+    url('/global/fonts/starwarz/starjedi-webfont.svg#star_jediregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.gifify-container{
+    font-size: 160px;
+    font-family: star_jediregular;
+
+    .gifify-letter{
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: rgba(0,0,0,0);
+    }
+
+}
