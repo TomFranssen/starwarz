@@ -1,4 +1,0 @@
-#set($videos = $dotcontent.pullRelated("Parent_${structurePrefixTool.getPrefixVelocityVariable($host)}YoutubeWidget-Child_${structurePrefixTool.getPrefixVelocityVariable($host)}YoutubeVideo","$ContentIdentifier",false,1))
-#foreach($item in $videos)
-	<iframe width="100%" #if($UtilMethods.isSet($hoogte))height="$!{hoogte}px"#end src="http://www.youtube.com/embed/$!{item.videoId}?modestbranding=1&version=3&amp;hl=nl_NL&showinfo=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
-#end
